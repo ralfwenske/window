@@ -1,12 +1,10 @@
 Red []
-
+git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red 
+unless (true = (exists? %window.red)) [
+    write %window.red read git
+]
+#include %window.red
 src: [
-    git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red 
-    either (true = (exists? %window.red)) [
-        #include %window.red
-    ][   
-        #include load git
-    ]
     mywin: window/make-window  
         'mywin      ;;; must equal receiving word (here mywin: ...)
         "Window Test 1"

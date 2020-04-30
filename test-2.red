@@ -4,11 +4,10 @@ Red [
 ]
 
 git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red 
-either (true = (exists? %window.red)) [
-    #include %window.red
-][   
-    #include load git
+unless (true = (exists? %window.red)) [
+    write %window.red read git
 ]
+#include %window.red
 
 page1: 
 {                below 
