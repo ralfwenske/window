@@ -2,16 +2,16 @@
  
  window/make-window creates a resizable view with tab-panels and areas.
 
- It is grown out of the need to quickly present data without getting lost in too many details of VID.
+ It is grown out of the need to quickly present data without spending much time with figuring out the details of VID. 
 
  Here an example created by the included %test-1.red
- (text wrapping in area are still issues on macOS and GTK)
 
  ![View showing it's own source code](./images/test-1.jpg)
 
 The same run on Mint (GTK branch)
 
  ![Alignments are a bit out ](./images/test-1GTK.jpg)
+
 ```
 Red []
 git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red 
@@ -53,3 +53,12 @@ view/flags mywin/window ['resize]
 
 The generated code can be saved to a file which should show the view
 (you may have to deactivate some actors - it is just the VID layout )
+
+
+Note:
+    When playing with these or your own you will find a few little things that still need to be resolved - eg.
+    on macOS: text wrapping
+    on GTK: alignment issues, text wrapping, 'Cancel' on dialog shuts the app down
+    
+    The code is not the most elegant and I welcome suggestions for improvement.
+    And of course bugs that might lure in there
