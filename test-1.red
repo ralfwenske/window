@@ -5,7 +5,7 @@ src: [
     either (true = (exists? %window.red)) [
         #include %window.red
     ][   
-        #include read git
+        #include load git
     ]
     mywin: window/make-window  
         'mywin      ;;; must equal receiving word (here mywin: ...)

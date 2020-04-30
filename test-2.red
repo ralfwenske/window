@@ -7,7 +7,7 @@ git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red
 either (true = (exists? %window.red)) [
     #include %window.red
 ][   
-    #include read git
+    #include load git
 ]
 
 page1: 
