@@ -11,7 +11,7 @@
 
 The same run on Mint (GTK branch)
 
- ![Alignments are a bit out ](./images/test-1.jpg)
+ ![Alignments are a bit out ](./images/test-1GTK.jpg)
 ```
 Red []
 git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red 
