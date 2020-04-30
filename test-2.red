@@ -1,6 +1,6 @@
 Red [ 
     Needs: 'View 
-    File: %test-window.red
+    File: %test-2.red
 ]
 
 git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red 
@@ -31,7 +31,7 @@ page2:  ; just some Faces (see View Engine / 6. Face types)
 
 win: window/make-window 
     'win        ;;; must equal receiving word
-    "test-window" 
+    "test-2" 
     650x700 
     ["File" [       
         "Load" File-Load [f/extra/log "Load menu"]

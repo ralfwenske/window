@@ -7,7 +7,7 @@ unless (true = (exists? %window.red)) [
 src: [
     mywin: window/make-window  
         'mywin      ;;; must equal receiving word (here mywin: ...)
-        "Window Test 1"
+        "test-1"
         700x700 
         []          ;default menu
         reduce [
