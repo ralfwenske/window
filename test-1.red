@@ -1,29 +1,36 @@
 Red []
-git: https://raw.githubusercontent.com/ralfwenske/window/master/window.red 
-unless (true = (exists? %window.red)) [
-    write %window.red read git
-]
+git: https://raw.githubusercontent.com/ralfwenske/window/master/ 
+pull: func [f [file!]][ unless exists? f [write f read rejoin [git f]] ]
+pull %window.red pull %test-1.red
 #include %window.red
 src: [
     mywin: window/make-window  
         'mywin      ;;; must equal receiving word (here mywin: ...)
         "test-1"
-        700x700 
-        []          ;default menu
+        900x750 
+        []          ;menu will be default (Quit Author)
         reduce [
-        "A panel" {
-            button "Save Source to %generated.red" [write %generated.red GENERATED-VID-area/text]
-            button "Test logging" [mywin/window/extra/log " Tested logging" ]
-            return
-            area-1: my-area 650x500} 
-        "A tab-panel" ["SOURCE" "GENERATED VID"]
+        "A 1. panel" 
+{            base %images/test-1-source.jpg
+                react [
+                    face/parent/size ;triggers this react
+                    attempt [mywin/window/extra/fit face] ;triggered before mywin exists
+                ]}
+        "A 2. panel"  
+{                button "Save generated source to %generated.red" [
+                    write %generated.red GENERATED-VID-area/text ]
+                button "Test logging" [mywin/window/extra/log "Tested logging" ]
+                return  area-1: my-area 850x500
+                    react [face/size: face/parent/size - 20x70] } 
+        "A tab-panel" [ "SOURCE" "GENERATED VID" ]
         ]        
-    ;;; Note: extra/log belongs to 'window face! is replace in src
-    ;;; [mywin/...] must equal first parameter for window/make-window call (above)
+    ;;; Note: extra/log belongs to 'window face! (is replaced accordingly)
 
     area-1/text: rejoin ["just some text at " now/date]
+
     SOURCE-head/text: "This source"
-    SOURCE-area/text: mold src      ;;; <-- why we reduce after
+    SOURCE-area/text: read %test-1.red
+
     GENERATED-VID-head/text: "The generated VID"
     GENERATED-VID-area/text: mywin/source    
 ]

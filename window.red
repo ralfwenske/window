@@ -54,7 +54,7 @@ window: context [
                     rejoin [{ at 0x0 
             } as-label title {-panel: panel 220.220.220 [
 } content {
-            ] react [face/size: face/parent/parent/size]}]           
+            ] react [face/size: face/parent/parent/size - 25x50]}]           
             ][
                 _make-subpanel  as-label title content
             ]
@@ -134,12 +134,28 @@ window: context [
                     button "Cancel" [res: false unview]
                 ][no-buttons  modal popup]
                 res
-            ]
+            ]; extra
+            fit: function [face [object!] ][
+                fs: face/size ps: face/parent/size - 20x20
+                if none? face/extra [
+                    print ["Creating extra"]
+                    face/extra: copy context [ratio: none] 
+                    face/extra/ratio: divide to-float fs/x fs/y
+                ]    
+                pratio: divide to-float ps/x ps/y
+                if ps/x <> ps/y [
+                    either pratio > face/extra/ratio [    
+                        face/size: to-pair reduce [(to-integer (ps/y * face/extra/ratio)) ps/y ]
+                    ][
+                        face/size: to-pair reduce [ps/x (to-integer (ps/x / face/extra/ratio))] 
+                    ]
+                ]
+            ]; fit
             log: function [txt][
                 append log-area/text rejoin [newline now/time " " txt]
                 lines: length? split head log-area/text newline
                 if (lines >= 3) [log-area/text: find/tail log-area/text newline ]
-            ]
+            ]; log
         ]
         w/actors: context compose/deep [
             on-menu: func [f e][
