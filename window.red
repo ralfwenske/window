@@ -96,8 +96,8 @@ window: context [
         append src 
     {] react [face/size: face/parent/size - 0x60]
     log-area: my-area react [
-        face/size: to-pair reduce [(face/parent/size/x - 20) 40]
-        face/offset: to-pair reduce [12 (face/parent/size/y - 55)]
+        face/size: as-pair (face/parent/size/x - 20) 40
+        face/offset: as-pair 12 (face/parent/size/y - 55)
     ]
     do  [system/view/capturing?: yes] 
 ]}   
