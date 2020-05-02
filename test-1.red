@@ -19,13 +19,13 @@ src: [
         'mywin      ;;; must equal receiving word (here mywin: ...)
         "test-1"
         900x750 
-        []          ;menu will be default (Quit Author)
+        []          ;empty --> menu will be default
         reduce [
         "A 1. panel" 
 {            base %images/test-1-source.jpg
                 react [
-                    face/parent/size ;triggers this react
-                    attempt [mywin/window/extra/fit face] ;triggered before mywin exists
+                    face/parent/size    ;;; triggers this react
+                    attempt [mywin/window/extra/fit face] 
                 ]}
         "A 2. panel"  
 {                button "Save generated source to %generated.red" [
