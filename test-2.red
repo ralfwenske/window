@@ -50,7 +50,7 @@ win: window/make-window
                             ;block creates tab-panel with head and area
     ] ; returns win/source, win/window and win/show-it
 
-Source-head/text: "The source from %test.red"
+Source-head/text: "The source from %test-2.red"
 Source-area/text:  read %test-2.red
 
 Generated-head/text: "The generated code"
