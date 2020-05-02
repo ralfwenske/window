@@ -144,9 +144,9 @@ window: context [
                 pratio: divide to-float ps/x ps/y
                 if ps/x <> ps/y [
                     either pratio > face/extra/ratio [    
-                        face/size: to-pair reduce [(to-integer (ps/y * face/extra/ratio)) ps/y ]
+                        face/size: as-pair (to-integer (ps/y * face/extra/ratio)) ps/y 
                     ][
-                        face/size: to-pair reduce [ps/x (to-integer (ps/x / face/extra/ratio))] 
+                        face/size: as-pair ps/x (to-integer (ps/x / face/extra/ratio)) 
                     ]
                 ]
             ]; fit
