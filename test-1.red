@@ -1,8 +1,19 @@
 Red []
 git: https://raw.githubusercontent.com/ralfwenske/window/master/ 
-pull: func [f [file!]][ unless exists? f [write f read rejoin [git f]] ]
-pull %window.red pull %test-1.red
-#include %window.red
+pull: function [f [file!] /bin][ 
+    unless exists? f [
+        unless exists? p: first split-path f [make-dir p]
+        either bin [
+            save f load rejoin [git f]
+        ][
+            write f read rejoin [git f]
+        ] 
+    ]
+]
+pull %window.red 
+pull %test-1.red 
+pull/bin %images/test-1-source.jpg
+do load %window.red
 src: [
     mywin: window/make-window  
         'mywin      ;;; must equal receiving word (here mywin: ...)
