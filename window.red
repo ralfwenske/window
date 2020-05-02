@@ -138,7 +138,6 @@ window: context [
             fit: function [face [object!] ][
                 fs: face/size ps: face/parent/size - 20x20
                 if none? face/extra [
-                    print ["Creating extra"]
                     face/extra: copy context [ratio: none] 
                     face/extra/ratio: divide to-float fs/x fs/y
                 ]    
@@ -181,7 +180,6 @@ window: context [
         ]
         replace src atitle rejoin [{generated } now ]
         replace/all src to-path reduce [awin 'window 'extra] to-path reduce [awin 'extra]
-;        print [atitle rejoin [{generated } now  ]]
         m/source: rejoin [
             {Red [
     Title: "generated } now {"
