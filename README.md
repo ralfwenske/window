@@ -76,7 +76,7 @@ Note:
     When playing with these tests or your own you may find a few little things that still need to be resolved - eg.
         on macOS: text wrapping
         on GTK: alignment issues, text wrapping
-            Hitting 'Cancel' on dialog shuts the app down
+            Hitting 'Cancel' on dialog shuts the app down (when activated clicking X)
     
     The code probably has much room for improvement and I welcome suggestions.
     And `window/make-window` 
